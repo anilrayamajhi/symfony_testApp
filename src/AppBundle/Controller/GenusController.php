@@ -6,18 +6,26 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class GenusController extends Controller
 {
+
+    /**
+     * @Route("/")
+     */
+    public function homeAction(){
+        return $this->render('genus/home.html.twig',[]);
+    }
+
 
   /**
   * @Route("genus")
   */
 
   public function showList(){
-    return new Response("HOME PAGE");
+//    return new Response("LIST PAGE");
   }
 
 
@@ -63,7 +71,6 @@ class GenusController extends Controller
 
     //JSON API end-point
     // return new Response(json_encode($data));
-
     return new JsonResponse($data);
     //JsonResponse does two things:
     //  1) call json_encode AND
