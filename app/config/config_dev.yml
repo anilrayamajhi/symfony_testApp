@@ -1,6 +1,9 @@
 imports:
     - { resource: config.yml }
 
+parameters:
+    cache_type: array
+
 framework:
     router:
         resource: "%kernel.root_dir%/config/routing_dev.yml"
@@ -23,12 +26,24 @@ monolog:
             channels: [!event, !doctrine]
         # uncomment to get logging in your browser
         # you may have to allow bigger header sizes in your Web server configuration
-        #firephp:
-        #    type:   firephp
-        #    level:  info
-        #chromephp:
-        #    type:   chromephp
-        #    level:  info
+
+
+       # run firePHP console
+        firephp:
+            type:   firephp
+            level:  info
+        chromephp:
+            type:   chromephp
+            level:  info
 
 #swiftmailer:
 #    delivery_addresses: ['me@example.com']
+
+# disable caching in the dev environment only
+#doctrine_cache:
+#    providers:
+#        my_markdown_cache:
+#            type: array
+# The array type is basically a "fake" cache: it won't ever store anything
+# Test:
+# Reload page always take additional 1 sec time, since its takes entire sec to sleep()

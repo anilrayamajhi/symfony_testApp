@@ -1,3 +1,11 @@
 app:
     resource: "@AppBundle/Controller/"
-    type:     annotation
+    type:     annotation #this loads annotation routes from controller
+
+homepage:
+    path: /
+    defaults:
+       _controller: AppBundle:Main:homepage
+    # learn this from > php bin/console debug:router <route_name>
+    # It means that we will have a controller in AppBundle
+    # called MainController with a method named homepageAction()

@@ -5,8 +5,14 @@ imports:
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+
+  # setting variable in parameters is like a global yml variable
+  # can be accessed from any .yml file eg: secret from parameters.yml, locale
 parameters:
     locale: en
+    cache_type: file_system
+    # set type of cache_type and use as variable in any other file
+    # here: doctrine_cache starting and ending with '%'
 
 framework:
     #esi:             ~
@@ -38,6 +44,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    number_format:
+        thousands_separator: ','
 
 # Doctrine Configuration
 doctrine:
@@ -49,6 +57,8 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
+        server_version: 5
+        unix_socket: "/Applications/MAMP/tmp/mysql/mysql.sock"
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml
         #     e.g. database_path: "%kernel.root_dir%/../var/data/data.sqlite"
@@ -62,9 +72,20 @@ doctrine:
         auto_mapping: true
 
 # Swiftmailer Configuration
-swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }
+#swiftmailer:
+#    transport: "%mailer_transport%"
+#    host:      "%mailer_host%"
+#    username:  "%mailer_user%"
+#    password:  "%mailer_password%"
+#    spool:     { type: memory }
+
+# see the file in tree structure using cmd:
+# > php bin/console debug:config doctrine_cache
+doctrine_cache:
+    providers:
+        my_markdown_cache:
+            type: %cache_type%
+            file_system:
+#                directory: /tmp/doctrine_cache
+#`              change absolute path to dynamic
+                directory: %kernel.cache_dir%/markdown_cache
