@@ -24,7 +24,7 @@ class AppKernel extends Kernel
             //DoctrineMigrationsBundle
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             //Friends
-            new FOS\UserBundle\FOSUserBundle()
+//            new FOS\UserBundle\FOSUserBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

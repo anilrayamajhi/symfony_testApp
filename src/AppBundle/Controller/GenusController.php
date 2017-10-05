@@ -37,9 +37,11 @@ class GenusController extends Controller
         $genus->setName('Octopus'.rand(1, 100));
         $genus->setSubFamily('Octopodinae');
         $genus->setSpeciesCount(rand(100, 99999));
+        $genus->setFunFact('YO Homie!!');
 
         $note = new GenusNote();
 
+        $note->setGenus($genus);
         $note->setUsername('AquaWeaver');
         $note->setUserAvatarFilename('ryan.jpeg');
         $note->setNote('I counted 8 legs... as they wrapped around me');
