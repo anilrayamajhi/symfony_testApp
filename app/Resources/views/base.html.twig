@@ -1,35 +1,75 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>{% block title %}GI{% endblock %}</title>
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-            <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/font-awesome.min.css') }}">
-        {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        <div class="search-bar">
-            <form method="GET" action="" class="js-sea-search sea-search">
-                <input type="search" name="q" placeholder="Search Sea Creatures" autocomplete="off" class="search-input">
-            </form>
-        </div>
-        <header class="header">
-            <h1 class="logo"><a href="/">🤘🏿🤘🏿</a></h1>
-            <ul class="navi">
-                <li class="search"><a href="#" class="js-header-search-toggle"><i class="fa fa-search"></i></a></li>
-                <li><a href="#">Login</a></li>
-            </ul>
-        </header>
-        {% block body %}{% endblock %}
-        <div class="footer">
-            <p class="footer-text">&copy;GI</p>
-        </div>
-        {% block javascripts %}
-            <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-            <script src="{{ asset('js/main.js') }}"></script>
-        {% endblock %}
-    </body>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}GI{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/font-awesome.min.css') }}">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+<div class="search-bar">
+    <form method="GET" action="" class="js-sea-search sea-search">
+        <input type="search" name="q" placeholder="Search Sea Creatures" autocomplete="off" class="search-input">
+    </form>
+</div>
+<header class="header">
+    <nav class="navbar navbar-inverse affix">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">🤘🏼</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ path('list_genus') }}">List</a></li>
+                    <li><a href="{{ asset('/playground') }}">PlayGround</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="http://www.anilrayamajhi.info/" target="_blank">✌</a></li>
+                            <li><a href="http://www.anilrayamajhi.info/" target="_blank">👻</a></li>
+                            <li><a href="http://www.anilrayamajhi.info/" target="_blank">🐒</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="http://www.anilrayamajhi.info/" target="_blank">🖕🏿</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="search"><a href="#" class="js-header-search-toggle"><i class="fa fa-search"></i></a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Login</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">SignUp</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</header><br /><br /><br />
+{% block body %}{% endblock %}
+<div class="footer">
+    <p class="footer-text">&copy;GI</p>
+</div>
+{% block javascripts %}
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+{% endblock %}
+</body>
 </html>
