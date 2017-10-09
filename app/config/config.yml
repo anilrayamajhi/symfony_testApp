@@ -89,3 +89,12 @@ doctrine_cache:
 #                directory: /tmp/doctrine_cache
 #`              change absolute path to dynamic
                 directory: %kernel.cache_dir%/markdown_cache
+
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+    from_email:
+        address: "gi@endertech.com"
+        sender_name: "GI"

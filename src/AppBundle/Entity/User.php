@@ -11,19 +11,27 @@ namespace AppBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
+// cmd + n: ORM class, ORM Annotation, getter.. everything
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="user")
+ */
 class User extends BaseUser
 {
     /**
      * @ORM\Id
-     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
      */
     protected $id;
 
-    public function __construct()
+    /**
+     * @return mixed
+     */
+    public function getId()
     {
-        parent::__construct();
-        // your own logic
+        return $this->id;
     }
+
 }
